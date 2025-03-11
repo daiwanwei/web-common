@@ -14,7 +14,13 @@ publish      = false
 
 [workspace]
 resolver = "2"
-members  = ["crates/metrics", "crates/response", "crates/server", "crates/grpc"]
+members = [
+  "crates/metrics",
+  "crates/response",
+  "crates/client",
+  "crates/server",
+  "crates/grpc",
+]
 
 [workspace.dependencies]
 # serialization / deserialization
@@ -60,6 +66,12 @@ tower-http = { version = "0.5", features = [
   "normalize-path",
   "trace",
 ] }
+wiremock = "0.6"
+
+# error handling
+anyhow    = "1"
+thiserror = "2"
+snafu     = "0.8"
 
 # misc
 bytes      = "1"
@@ -67,10 +79,10 @@ http       = "1"
 indexmap   = { version = "2", features = ["serde"] }
 mime       = "0.3"
 prometheus = "0.13"
-snafu      = "0.8"
 
 web-response = { path = "./crates/response" }
 web-metrics  = { path = "./crates/metrics" }
+web-client   = { path = "./crates/client" }
 web-server   = { path = "./crates/server" }
 web-grpc     = { path = "./crates/grpc" }
 
